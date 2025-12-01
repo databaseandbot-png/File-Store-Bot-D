@@ -43,7 +43,7 @@
       },
       "DB_NAME":{ 
           "description":"Your Mongo DB Database Name",
-          "value": "madflixbotz",
+          "value": "Davi",
           "required": false
       },
       "START_MESSAGE": {
