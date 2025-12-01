@@ -3,7 +3,7 @@
   "description": "Telegram File Sharing Premium Bot Bot ",
   "logo": "https://files.catbox.moe/r9pwvd.jpg",
   "keywords": ["File Sharing Premium Bot", "Mongo DB"],    
-  "repository": "https://github.com/JishuDeveloper/File-Sharing-Bot",
+  "repository": "https://github.com/databaseandbot-png/File-Store-Bot-D/tree/main",
   "success_url": "https://t.me/orewa_void",
   "env": {
       "API_ID": {
