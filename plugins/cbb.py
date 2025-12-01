@@ -1,28 +1,28 @@
+from pyrogram import __version__
+from bot import Bot
+from config import OWNER_ID
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
-from pyrogram import __version__, filters
-from pyrogram.types import (InlineKeyboardButton, CallbackQuery,
-                            InlineKeyboardMarkup)
-from pyrogram.types import Message, InlineKeyboardMarkup, CallbackQuery
 
-@bot.on_callback_query(filters.regex("ekbquery"))
-async def callback_query_ekb(bot, query: CallbackQuery):
+
+@Bot.on_callback_query()
+async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
-    
-    if data == "ekbquery":
+    if data == "about":
         await query.message.edit_text(
-            f"**File Sharing ProBot**\n\n\n**Owner** : <a href='t.me/FileSharingProBot'>File Sharing Bot</a>\n\n**Language** : <a href='https://www.python.org'>Python 3</a>\n\n**Library** : <a href='https://pyrogram.org'>{__version__}</a>\n\n**Server** : <a href='https://heroku.com'>Heroku</a>\n\n**Channel** : <a href='https://t.me/orewa_void'>Tom Botz</a>\n\n**Developer** : <a href='tg://user?id=OWNER_ID'>Tom</a>",
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
+            text = f"<b>🤖 My Name :</b> <a href='https://t.me/FileSharingXProBot'>File Sharing Bot</a> \n<b>📝 Language :</b> <a href='https://python.org'>Python 3</a> \n<b>📚 Library :</b> <a href='https://pyrogram.org'>Pyrogram {__version__}</a> \n<b>🚀 Server :</b> <a href='https://heroku.com'>Heroku</a> \n<b>📢 Channel :</b> <a href='https://t.me/orewa_void'>Tom Botz</a> \n<b>🧑‍💻 Developer :</b> <a href='tg://user?id={OWNER_ID}'>Tom Developer</a>",
+            disable_web_page_preview = True,
+            reply_markup = InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("Close", callback_data="close")]
+                    [
+                        InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    ]
                 ]
             )
         )
-    
     elif data == "close":
+        await query.message.delete()
         try:
-            await query.message.delete()
             await query.message.reply_to_message.delete()
         except:
             pass
-
